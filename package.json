@@ -1,0 +1,28 @@
+{
+  "name": "competitive-time-machine",
+  "version": "1.0.0",
+  "description": "Manual competitor screenshot viewer and visual diff system",
+  "type": "module",
+  "scripts": {
+    "diff": "node src/diff.js",
+    "index": "node src/generate-index.js",
+    "analyze": "node src/analyze.js",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "competitive-analysis",
+    "screenshots",
+    "visual-diff",
+    "ux-research"
+  ],
+  "author": "David Olson",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "playwright": "^1.42.0",
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0",
+    "yaml": "^2.4.0"
+  }
+}

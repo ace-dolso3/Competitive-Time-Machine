@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Competitive Time Machine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h1>🕐 Time Machine</h1>
+        <p class="subtitle">Competitive Intelligence</p>
+      </div>
+      
+      <nav class="competitors-nav">
+        <h2>Competitors</h2>
+        <ul id="competitor-list">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button id="refresh-btn" class="btn btn-secondary">↻ Refresh Data</button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="breadcrumb">
+          <span id="current-competitor">Select a competitor</span>
+          <span class="separator">›</span>
+          <span id="current-page">-</span>
+        </div>
+        
+        <div class="controls">
+          <div class="viewport-toggle">
+            <button id="viewport-desktop" class="btn btn-toggle active">🖥 Desktop</button>
+            <button id="viewport-mobile" class="btn btn-toggle">📱 Mobile</button>
+          </div>
+          
+          <div class="view-mode">
+            <button id="mode-sidebyside" class="btn btn-toggle active">Side by Side</button>
+            <button id="mode-diff" class="btn btn-toggle">Diff Overlay</button>
+            <button id="mode-slider" class="btn btn-toggle">Slider</button>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Page Navigation -->
+      <div class="page-nav" id="page-nav">
+        <!-- Populated by JS -->
+      </div>
+      
+      <!-- Timeline -->
+      <div class="timeline" id="timeline">
+        <!-- Populated by JS -->
+      </div>
+      
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Screenshot Viewer -->
+        <div class="screenshot-viewer" id="screenshot-viewer">
+          <div class="viewer-panel" id="viewer-panel">
+            <!-- View content injected by JS -->
+            <div class="empty-state">
+              <p>👈 Select a competitor and page to begin</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Analysis Panel -->
+        <aside class="analysis-panel" id="analysis-panel">
+          <div class="panel-header">
+            <h3>📊 Analysis</h3>
+            <button id="toggle-analysis" class="btn btn-icon">◀</button>
+          </div>
+          
+          <div class="panel-content">
+            <!-- Change Summary -->
+            <section class="analysis-section">
+              <h4>Change Summary</h4>
+              <div class="change-stats" id="change-stats">
+                <div class="stat">
+                  <span class="stat-label">Desktop</span>
+                  <span class="stat-value" id="stat-desktop">-</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Mobile</span>
+                  <span class="stat-value" id="stat-mobile">-</span>
+                </div>
+              </div>
+            </section>
+            
+            <!-- AI Insights -->
+            <section class="analysis-section">
+              <h4>🤖 AI Insights</h4>
+              <div id="ai-insights" class="insights-content">
+                <p class="placeholder">No analysis available yet.</p>
+                <p class="placeholder hint">Run AI analysis in your IDE to populate this section.</p>
+              </div>
+            </section>
+            
+            <!-- Notes -->
+            <section class="analysis-section">
+              <h4>📝 Notes</h4>
+              <textarea id="notes-input" placeholder="Add your observations..."></textarea>
+              <button id="save-notes" class="btn btn-primary">Save Notes</button>
+            </section>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+  
+  <script src="viewer.js"></script>
+</body>
+</html>

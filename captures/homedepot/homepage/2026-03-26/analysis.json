@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-03-26T16:45:00.000Z",
+  "competitor": "homedepot",
+  "page": "homepage",
+  "currentDate": "2026-03-26",
+  "previousDate": "2026-03-25",
+  "viewports": {
+    "desktop": {
+      "success": true,
+      "analysis": "**Summary**: Home Depot added a prominent red \"NEW PROMO!\" banner to their homepage hero section, signaling a new promotional campaign.\n\n**Promotional Changes**:\n- New red promotional banner added to the hero section\n- High-visibility placement suggests a major campaign launch\n- Banner uses urgent, attention-grabbing styling\n\n**Product Changes**:\n- No changes to featured product categories\n- Core \"More savings. More icons.\" messaging remains unchanged\n\n**Layout Changes**:\n- Hero section now includes overlay promotional element\n- Navigation and footer structure unchanged\n\n**Pricing Signals**:\n- The \"NEW PROMO!\" banner suggests upcoming or active discounts\n- Specific pricing not visible but promotional intent is clear\n\n**Strategic Insights**:\n- Home Depot is launching a new promotional campaign\n- The prominent banner placement indicates this is a priority initiative\n- Ace Hardware should monitor for specific deals that may need competitive response\n- Consider whether Ace has competing promotions to highlight"
+    },
+    "mobile": {
+      "skipped": true,
+      "reason": "no_changes",
+      "summary": "No visual changes detected between captures."
+    }
+  }
+}

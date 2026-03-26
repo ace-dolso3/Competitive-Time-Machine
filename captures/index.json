@@ -1,0 +1,104 @@
+{
+  "generated": "2026-03-26T16:46:09.503Z",
+  "competitors": [
+    {
+      "name": "homedepot",
+      "displayName": "Home Depot",
+      "pages": [
+        {
+          "label": "PLP",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "cart",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "category",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "checkout",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "homepage",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": true,
+              "hasMobileDiff": true,
+              "hasMetadata": true,
+              "hasAnalysis": true
+            },
+            {
+              "date": "2026-03-25",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "product",
+          "dates": [
+            {
+              "date": "2026-03-26",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
