@@ -2,38 +2,37 @@
 
 **Created:** March 26, 2026  
 **Author:** David Olson (Senior UX/UI Designer, Ace Hardware)  
-**Status:** Ready for Implementation
+**Status:** Active
 
 ---
 
 ## Overview
 
-An automated visual competitive intelligence system that captures screenshots of competitor e-commerce pages, generates visual diffs to highlight changes, and provides AI-powered UX analysis on demand.
+A visual competitive intelligence system that organizes manually captured screenshots of competitor e-commerce pages, generates visual diffs to highlight changes, and provides AI-powered UX analysis on demand.
 
 ---
 
 ## Understanding Summary
 
-- **What:** Automated screenshot capture and visual diff system for competitor websites (Lowe's, Home Depot, Menards, Amazon home improvement)
+- **What:** Screenshot organization and visual diff system for competitor websites (Lowe's, Home Depot, Menards, Amazon home improvement)
 - **Why:** Replace manual "browse and take notes" with a living visual record; support UX design decisions with concrete competitor evidence
 - **Who:** Senior UX/UI Designer (primary), shared with marketing, product, and executives
-- **Scope:** ~20 key pages including PDPs and customer journey steps; desktop (1440px) and mobile (390px) viewports
+- **Scope:** Key pages including PDPs and customer journey steps; desktop and mobile viewports
 - **Key Capability:** Visual diff highlighting with on-demand AI analysis for layout changes, styling changes, and UX pattern detection
-- **Output:** Integrated viewer/dashboard with analysis panel; ability to generate focused or consolidated reports
-- **Operational Model:** Manually triggered captures; you maintain with minimal ongoing attention
+- **Output:** Integrated viewer/dashboard with analysis panel
+- **Operational Model:** Manual screenshot captures; automated diff generation and indexing
 
 ### Explicit Non-Goals
 
+- Automated screenshot capture (manual process)
 - Real-time or daily tracking (weekly/on-demand is sufficient)
 - Content, copy, or pricing change detection
 - Internal Ace page tracking (competitors only)
-- Automated scheduling (deferred for later)
 
 ### Assumptions
 
 - Public competitor pages can be captured without legal/ToS issues (standard competitive research)
 - SharePoint/OneDrive remains accessible for storage and sharing
-- ~40 captures per run (20 pages × 2 viewports) is the operating scale
 - AI analysis uses existing IDE credits (Copilot/Claude) at no additional cost
 
 ---
@@ -42,14 +41,14 @@ An automated visual competitive intelligence system that captures screenshots of
 
 ### Core Components
 
-1. **URL Configuration File** (`config.yaml`)  
-   List of competitor URLs organized by competitor and page type, with optional per-site overrides for wait times and modal dismissal.
+1. **Manual Screenshot Capture**  
+   Screenshots taken via browser dev tools or Safari, saved as `desktop.png` and `mobile.png` in dated folders.
 
-2. **Screenshot Capture Engine** (`src/capture.js`)  
-   Playwright-based headless browser automation. Handles lazy loading, cookie banners, full-page scroll capture, and retry logic.
-
-3. **Visual Diff Generator** (`src/diff.js`)  
+2. **Visual Diff Generator** (`src/diff.js`)  
    Pixelmatch-based pixel comparison. Outputs diff images highlighting changed regions and calculates change percentage.
+
+3. **Index Generator** (`src/generate-index.js`)  
+   Scans the captures folder and generates `index.json` for the viewer.
 
 4. **Viewer Dashboard** (`viewer/index.html`)  
    Vanilla HTML/JS/CSS single-page application. Displays screenshots, diffs, and AI analysis. Runs from filesystem with no build step.
@@ -60,19 +59,17 @@ An automated visual competitive intelligence system that captures screenshots of
 ### Data Flow
 
 ```
-Manual trigger (npm run capture)
+Manual screenshot capture (browser)
     ↓
-Capture screenshots (both viewports)
+Save to dated folders (desktop.png, mobile.png)
     ↓
-Save to dated folders
+npm run diff → Generate diffs against previous capture
     ↓
-Generate diffs against previous capture
-    ↓
-Update viewer index
+npm run index → Update viewer index
     ↓
 [Optional] Run AI analysis via IDE → writes to analysis.json
     ↓
-View in dashboard
+View in dashboard (open viewer/index.html)
 ```
 
 ---

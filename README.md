@@ -1,6 +1,6 @@
 # 🕐 Competitive Time Machine
 
-**Automated screenshot capture, visual diffing, and AI analysis for competitor monitoring.**
+**Visual diffing and AI analysis for competitor monitoring.**
 
 ## Quick Start
 
@@ -8,11 +8,13 @@
 # Install dependencies
 npm install
 
-# Run first capture
-npm run capture
+# Add screenshots to captures folder (see Manual Capture Workflow below)
 
 # Generate visual diffs
 npm run diff
+
+# Regenerate index for viewer
+npm run index
 
 # Open viewer
 open viewer/index.html
@@ -22,20 +24,32 @@ open viewer/index.html
 
 | Command | Description |
 |---------|-------------|
-| `npm run capture` | Capture screenshots from all configured competitors |
 | `npm run diff` | Generate visual diffs comparing to previous captures |
-| `npm run full` | Run capture + diff + index in sequence |
 | `npm run index` | Regenerate the captures index for the viewer |
+
+## Manual Capture Workflow
+
+1. **Take screenshots** using Safari or your browser's dev tools
+2. **Name files** `desktop.png` and `mobile.png`
+3. **Save to** `captures/{competitor}/{page}/{YYYY-MM-DD}/`
+
+Example folder structure after capture:
+```
+captures/
+  homedepot/
+    homepage/
+      2026-03-26/
+        desktop.png
+        mobile.png
+```
 
 ## Project Structure
 
 ```
 ├── src/
-│   ├── config.yaml      # Competitor URLs and settings
-│   ├── capture.js       # Playwright capture script
 │   ├── diff.js          # Pixelmatch diff generator
 │   └── generate-index.js # Index generator for viewer
-├── captures/            # Output directory (auto-created)
+├── captures/            # Screenshot storage
 │   └── {competitor}/
 │       └── {page}/
 │           └── {date}/
@@ -53,15 +67,12 @@ open viewer/index.html
 
 ## Adding Competitors
 
-Edit `src/config.yaml`:
-
-```yaml
-competitors:
-  newcompetitor:
-    pages:
-      - label: homepage
-        url: https://example.com/
+Create the folder structure manually:
 ```
+captures/{competitor-name}/{page-name}/{YYYY-MM-DD}/
+```
+
+Then add `desktop.png` and `mobile.png` screenshots.
 
 ## AI Analysis
 
@@ -72,10 +83,6 @@ Use your IDE (Copilot, Claude) to analyze screenshots:
 3. Save insights to `analysis.json` alongside the capture
 
 ## Troubleshooting
-
-**Capture fails with timeout:**
-- Increase timeout in config.yaml
-- Check if site requires different dismiss selectors
 
 **Diff shows 100% change:**
 - Normal for first capture (no baseline)
