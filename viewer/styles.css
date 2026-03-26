@@ -355,10 +355,15 @@ body {
   display: none;
 }
 
+.analysis-panel.collapsed .panel-header h3 {
+  display: none;
+}
+
 .panel-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--space-sm);
   padding: var(--space-md);
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -366,6 +371,32 @@ body {
 .panel-header h3 {
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+/* Toggle Arrow Button */
+.toggle-arrow {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--bg-dark);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.toggle-arrow:hover {
+  background: var(--bg-light);
+  color: var(--text-primary);
+}
+
+/* Rotate arrow when collapsed */
+.analysis-panel.collapsed .toggle-arrow {
+  transform: rotate(180deg);
 }
 
 .panel-content {
