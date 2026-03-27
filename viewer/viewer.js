@@ -129,6 +129,8 @@ function renderCompetitorList() {
  */
 function renderPageNav(pages) {
   const nav = document.getElementById('page-nav');
+  nav.classList.remove('hidden');
+  document.querySelector('.timeline-controls').classList.remove('hidden');
   Array.from(nav.children).forEach(el => {
     if (!el.classList.contains('nav-section-title')) el.remove();
   });

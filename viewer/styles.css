@@ -72,10 +72,13 @@ body {
 /* Sidebar */
 .sidebar {
   width: var(--sidebar-width);
+  height: 100vh;
   background: var(--bg-medium);
   display: flex;
   flex-direction: column;
   border-right: 1px solid #255595;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
@@ -184,6 +187,10 @@ body {
   flex-wrap: wrap;
 }
 
+.page-nav.hidden {
+  display: none;
+}
+
 .page-sep {
   color: rgba(255,255,255,0.3);
   font-size: 0.75rem;
@@ -255,6 +262,10 @@ body {
   margin-left: auto;
   flex-shrink: 0;
   padding: var(--space-md) var(--space-lg) var(--space-sm);
+}
+
+.timeline-controls.hidden {
+  display: none;
 }
 
 .timeline-select {
