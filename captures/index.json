@@ -1,6 +1,96 @@
 {
-  "generated": "2026-03-26T18:48:13.458Z",
+  "generated": "2026-03-27T14:46:05.179Z",
   "competitors": [
+    {
+      "name": "amazon",
+      "displayName": "Amazon",
+      "pages": [
+        {
+          "label": "homepage",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "category",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "PLP",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "PDP",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "cart",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        },
+        {
+          "label": "checkout",
+          "dates": [
+            {
+              "date": "2026-03-27",
+              "hasDesktop": true,
+              "hasMobile": true,
+              "hasDesktopDiff": false,
+              "hasMobileDiff": false,
+              "hasMetadata": false,
+              "hasAnalysis": false
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "homedepot",
       "displayName": "Home Depot",
