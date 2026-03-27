@@ -40,7 +40,7 @@ async function loadCapturesIndex() {
   }
   
   // Fallback: try to detect competitors from known list
-  const knownCompetitors = ['lowes', 'homedepot', 'menards', 'amazon'];
+  const knownCompetitors = ['lowes', 'homedepot', 'walmart', 'menards', 'amazon'];
   const competitors = [];
   
   for (const name of knownCompetitors) {
@@ -129,9 +129,21 @@ function renderCompetitorList() {
  */
 function renderPageNav(pages) {
   const nav = document.getElementById('page-nav');
-  nav.innerHTML = '';
+  Array.from(nav.children).forEach(el => {
+    if (!el.classList.contains('nav-section-title')) el.remove();
+  });
   
-  for (const page of pages) {
+  for (let i = 0; i < pages.length; i++) {
+    const page = pages[i];
+
+    if (i > 0) {
+      const sep = document.createElement('span');
+      sep.className = 'page-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '→';
+      nav.appendChild(sep);
+    }
+
     const btn = document.createElement('button');
     btn.className = 'page-btn';
     btn.textContent = formatPageLabel(page.label);
@@ -158,20 +170,23 @@ function renderPageNav(pages) {
 function renderTimeline(dates) {
   const timeline = document.getElementById('timeline');
   timeline.innerHTML = '';
-  
+
+  if (dates.length === 0) return;
+
+  const select = document.createElement('select');
+  select.className = 'timeline-select';
+  select.id = 'date-select';
+
   for (const date of dates) {
-    const item = document.createElement('button');
-    item.className = 'timeline-item';
-    item.textContent = formatDate(date);
-    item.dataset.date = date;
-    
-    if (date === state.currentDate) {
-      item.classList.add('active');
-    }
-    
-    item.addEventListener('click', () => selectDate(date));
-    timeline.appendChild(item);
+    const option = document.createElement('option');
+    option.value = date;
+    option.textContent = formatDate(date);
+    if (date === state.currentDate) option.selected = true;
+    select.appendChild(option);
   }
+
+  select.addEventListener('change', () => selectDate(select.value));
+  timeline.appendChild(select);
 }
 
 /**
@@ -219,15 +234,26 @@ function renderSideBySide(panel, currentPath, previousPath, viewport) {
   panel.innerHTML = `
     <div class="side-by-side">
       <div class="comparison-panel">
-        <h4>Current (${state.currentDate})</h4>
-        <img src="${currentImg}" alt="Current capture" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%23888%22>Image not found</text></svg>'">
-      </div>
-      <div class="comparison-panel">
-        <h4>Previous ${previousPath ? `(${previousPath.split('/').pop()})` : '(None)'}</h4>
+        <div class="comparison-panel-header comparison-panel-header--previous">
+          <h4>Previous ${previousPath ? `(${previousPath.split('/').pop()})` : '(None)'}</h4>
+          ${previousImg
+            ? `<a class="panel-open-link" href="${previousImg}" target="_blank" title="Open image in new tab"><span class="material-symbols-outlined">open_in_new</span></a>`
+            : ''
+          }
+        </div>
         ${previousImg 
           ? `<img src="${previousImg}" alt="Previous capture" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%23888%22>Image not found</text></svg>'">`
           : '<div class="empty-state"><p>No previous capture</p></div>'
         }
+      </div>
+      <div class="comparison-panel">
+        <div class="comparison-panel-header">
+          <h4>Current (${state.currentDate})</h4>
+          <a class="panel-open-link" href="${currentImg}" target="_blank" title="Open image in new tab">
+            <span class="material-symbols-outlined">open_in_new</span>
+          </a>
+        </div>
+        <img src="${currentImg}" alt="Current capture" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%23888%22>Image not found</text></svg>'">
       </div>
     </div>
   `;
@@ -311,7 +337,11 @@ async function renderAnalysis() {
   );
   
   const insightsEl = document.getElementById('ai-insights');
-  
+
+  // Always clear the date first; only re-show it if a comparison is available
+  const analysisDateEl = document.getElementById('analysis-date');
+  if (analysisDateEl) { analysisDateEl.textContent = ''; analysisDateEl.style.display = 'none'; }
+
   // New viewport-based format from analyze.js
   if (analysis?.viewports) {
     const viewport = state.currentViewport;
@@ -321,6 +351,7 @@ async function renderAnalysis() {
       insightsEl.innerHTML = `
         <p class="placeholder">${viewportAnalysis.summary || 'Analysis skipped: ' + viewportAnalysis.reason}</p>
       `;
+      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
     } else if (viewportAnalysis?.success && viewportAnalysis?.analysis) {
       // Convert markdown-style text to HTML
       const html = formatAnalysisMarkdown(viewportAnalysis.analysis);
@@ -328,18 +359,27 @@ async function renderAnalysis() {
         <div class="analysis-content">
           ${html}
         </div>
-        <div class="analysis-meta">
-          <small>Comparing ${analysis.currentDate} to ${analysis.previousDate}</small>
-        </div>
       `;
+      const analysisDateEl = document.getElementById('analysis-date');
+      if (analysisDateEl) {
+        if (analysis.previousDate) {
+          analysisDateEl.textContent = `Comparing ${formatDate(analysis.currentDate)} to ${formatDate(analysis.previousDate)}`;
+          analysisDateEl.style.display = '';
+        } else {
+          analysisDateEl.textContent = '';
+          analysisDateEl.style.display = 'none';
+        }
+      }
     } else if (viewportAnalysis?.error) {
       insightsEl.innerHTML = `
         <p class="placeholder error">Analysis error: ${viewportAnalysis.error}</p>
       `;
+      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
     } else {
       insightsEl.innerHTML = `
         <p class="placeholder">No analysis for ${viewport} viewport.</p>
       `;
+      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
     }
   } 
   // Legacy insights array format
@@ -418,14 +458,23 @@ function selectCompetitor(name) {
   document.getElementById('current-page').textContent = '-';
   
   renderCompetitorList();
-  
+
+  // Reload notes scoped to this competitor
+  refreshNotesList();
+
   // Load pages for this competitor
   const pages = getAvailablePages(name);
   renderPageNav(pages);
   
-  // Clear timeline and viewer
-  document.getElementById('timeline').innerHTML = '';
-  renderViewer();
+  // Auto-select Homepage if available, otherwise first page
+  const defaultPage = pages.find(p => p.label === 'homepage') || pages[0];
+  if (defaultPage) {
+    selectPage(defaultPage.label);
+  } else {
+    // Clear timeline and viewer if no pages
+    document.getElementById('timeline').innerHTML = '';
+    renderViewer();
+  }
 }
 
 function selectPage(label) {
@@ -453,12 +502,10 @@ function selectPage(label) {
 
 function selectDate(date) {
   state.currentDate = date;
-  
-  // Update active state
-  document.querySelectorAll('.timeline-item').forEach(item => {
-    item.classList.toggle('active', item.dataset.date === date);
-  });
-  
+
+  const select = document.getElementById('date-select');
+  if (select) select.value = date;
+
   renderViewer();
   renderAnalysis();
 }
@@ -491,6 +538,7 @@ function formatCompetitorName(name) {
   const names = {
     lowes: "Lowe's",
     homedepot: 'Home Depot',
+    walmart: 'Walmart',
     menards: 'Menards',
     amazon: 'Amazon'
   };
@@ -526,10 +574,11 @@ function getAvailablePages(competitor) {
   
   // Fallback hardcoded config
   const pages = {
-    lowes: ['homepage', 'category', 'PLP', 'product', 'cart'],
-    homedepot: ['homepage', 'category', 'PLP', 'product', 'cart', 'checkout'],
-    menards: ['homepage', 'category', 'product', 'weekly-ad'],
-    amazon: ['home-improvement-storefront', 'power-tools', 'pdp-drill', 'bestsellers-tools']
+    lowes: ['homepage', 'category', 'PLP', 'PDP', 'cart', 'checkout'],
+    homedepot: ['homepage', 'category', 'PLP', 'PDP', 'cart', 'checkout'],
+    walmart: ['homepage', 'category', 'PLP', 'PDP', 'cart', 'checkout'],
+    menards: ['homepage', 'category', 'PDP', 'weekly-ad'],
+    amazon: ['home-improvement-storefront', 'power-tools', 'PDP', 'bestsellers-tools']
   };
   
   return (pages[competitor] || []).map(label => ({ label }));
@@ -556,6 +605,53 @@ function getAvailableDates() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// NOTES (scoped per competitor)
+// ═══════════════════════════════════════════════════════════════
+
+function notesKey() {
+  return `ctm_notes_${state.currentCompetitor || '_global'}`;
+}
+
+function loadNotes() {
+  try { return JSON.parse(localStorage.getItem(notesKey())) || []; }
+  catch { return []; }
+}
+
+function saveNotes(notes) {
+  localStorage.setItem(notesKey(), JSON.stringify(notes));
+}
+
+function renderNoteEntry(note) {
+  const entry = document.createElement('div');
+  entry.className = 'note-entry';
+  entry.dataset.id = note.id;
+  entry.innerHTML = `
+    <div class="note-entry-header">
+      <span class="note-timestamp">${note.timestamp}</span>
+      <button class="note-delete-btn" title="Delete note">
+        <span class="material-symbols-outlined">delete</span>
+      </button>
+    </div>
+    <p class="note-entry-text">${note.text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+  `;
+  entry.querySelector('.note-delete-btn').addEventListener('click', () => {
+    if (confirm('Delete this note?')) {
+      entry.remove();
+      const notes = loadNotes().filter(n => n.id !== note.id);
+      saveNotes(notes);
+    }
+  });
+  return entry;
+}
+
+function refreshNotesList() {
+  const notesList = document.getElementById('notes-list');
+  if (!notesList) return;
+  notesList.innerHTML = '';
+  loadNotes().forEach(note => notesList.appendChild(renderNoteEntry(note)));
+}
+
+// ═══════════════════════════════════════════════════════════════
 // EVENT HANDLERS
 // ═══════════════════════════════════════════════════════════════
 
@@ -578,13 +674,30 @@ function setupEventListeners() {
   document.getElementById('refresh-btn').addEventListener('click', () => {
     location.reload();
   });
-  
+
+  // Load notes for current context (scoped per competitor)
+  refreshNotesList();
+
   // Save notes
-  document.getElementById('save-notes').addEventListener('click', async () => {
-    const notes = document.getElementById('notes-input').value;
-    console.log('Notes would be saved:', notes);
-    // In a real implementation, this would save to metadata.json
-    alert('Notes saved! (In production, this would update metadata.json)');
+  document.getElementById('save-notes').addEventListener('click', () => {
+    const input = document.getElementById('notes-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const now = new Date();
+    const note = {
+      id: Date.now(),
+      timestamp: now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        + ' ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+      text
+    };
+
+    const notes = loadNotes();
+    notes.push(note);
+    saveNotes(notes);
+
+    document.getElementById('notes-list').appendChild(renderNoteEntry(note));
+    input.value = '';
   });
 }
 

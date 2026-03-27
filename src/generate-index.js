@@ -86,6 +86,17 @@ async function generateIndex() {
       }
     }
     
+    // Sort pages in canonical flow order
+    const PAGE_ORDER = ['homepage', 'category', 'PLP', 'PDP', 'cart', 'checkout'];
+    competitorData.pages.sort((a, b) => {
+      const ai = PAGE_ORDER.indexOf(a.label);
+      const bi = PAGE_ORDER.indexOf(b.label);
+      if (ai === -1 && bi === -1) return a.label.localeCompare(b.label);
+      if (ai === -1) return 1;
+      if (bi === -1) return -1;
+      return ai - bi;
+    });
+
     if (competitorData.pages.length > 0) {
       index.competitors.push(competitorData);
     }
