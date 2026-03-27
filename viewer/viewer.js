@@ -169,7 +169,10 @@ function renderPageNav(pages) {
  */
 function renderTimeline(dates) {
   const timeline = document.getElementById('timeline');
-  timeline.innerHTML = '';
+  const existingSelect = timeline.querySelector('.timeline-select');
+  if (existingSelect) {
+    existingSelect.remove();
+  }
 
   if (dates.length === 0) return;
 
@@ -453,9 +456,11 @@ function selectCompetitor(name) {
   state.currentCompetitor = name;
   state.currentPage = null;
   state.currentDate = null;
-  
-  document.getElementById('current-competitor').textContent = formatCompetitorName(name);
-  document.getElementById('current-page').textContent = '-';
+
+  const currentCompetitorEl = document.getElementById('current-competitor');
+  const currentPageEl = document.getElementById('current-page');
+  if (currentCompetitorEl) currentCompetitorEl.textContent = formatCompetitorName(name);
+  if (currentPageEl) currentPageEl.textContent = '-';
   
   renderCompetitorList();
 
@@ -480,8 +485,9 @@ function selectCompetitor(name) {
 function selectPage(label) {
   state.currentPage = label;
   state.currentDate = null;
-  
-  document.getElementById('current-page').textContent = formatPageLabel(label);
+
+  const currentPageEl = document.getElementById('current-page');
+  if (currentPageEl) currentPageEl.textContent = formatPageLabel(label);
   
   // Update active state
   document.querySelectorAll('.page-btn').forEach(btn => {
