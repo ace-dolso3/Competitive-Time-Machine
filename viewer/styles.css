@@ -32,6 +32,19 @@
   --transition-normal: 250ms ease;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
