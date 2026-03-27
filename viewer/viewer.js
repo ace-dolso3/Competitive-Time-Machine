@@ -241,10 +241,16 @@ function renderSideBySide(panel, currentPath, previousPath, viewport) {
       <div class="comparison-panel">
         <div class="comparison-panel-header comparison-panel-header--previous">
           <h4>Previous ${previousPath ? `(${previousPath.split('/').pop()})` : '(None)'}</h4>
-          ${previousImg
-            ? `<a class="panel-open-link" href="${previousImg}" target="_blank" title="Open image in new tab"><span class="material-symbols-outlined">open_in_new</span></a>`
-            : ''
-          }
+          <div class="panel-header-actions">
+            ${previousImg
+              ? `<button class="panel-copy-btn" data-img="${previousImg}" title="Copy image to clipboard"><span class="material-symbols-outlined">content_copy</span></button>`
+              : ''
+            }
+            ${previousImg
+              ? `<a class="panel-open-link" href="${previousImg}" target="_blank" title="Open image in new tab"><span class="material-symbols-outlined">open_in_new</span></a>`
+              : ''
+            }
+          </div>
         </div>
         ${previousImg 
           ? `<img src="${previousImg}" alt="Previous capture" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%23888%22>Image not found</text></svg>'">`
@@ -254,14 +260,26 @@ function renderSideBySide(panel, currentPath, previousPath, viewport) {
       <div class="comparison-panel">
         <div class="comparison-panel-header">
           <h4>Current (${state.currentDate})</h4>
-          <a class="panel-open-link" href="${currentImg}" target="_blank" title="Open image in new tab">
-            <span class="material-symbols-outlined">open_in_new</span>
-          </a>
+          <div class="panel-header-actions">
+            <button class="panel-copy-btn" data-img="${currentImg}" title="Copy image to clipboard"><span class="material-symbols-outlined">content_copy</span></button>
+            <a class="panel-open-link" href="${currentImg}" target="_blank" title="Open image in new tab">
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+          </div>
         </div>
         <img src="${currentImg}" alt="Current capture" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22%23888%22>Image not found</text></svg>'">
       </div>
     </div>
   `;
+  
+  // Attach copy button listeners
+  panel.querySelectorAll('.panel-copy-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const imgPath = btn.dataset.img;
+      await copyImageToClipboard(imgPath, btn);
+    });
+  });
 }
 
 function renderDiffView(panel, currentPath, viewport) {
@@ -536,6 +554,52 @@ function setViewMode(mode) {
   document.getElementById('mode-slider').classList.toggle('active', mode === 'slider');
   
   renderViewer();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CLIPBOARD UTILITIES
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Copy image from URL to clipboard
+ */
+async function copyImageToClipboard(imagePath, buttonElement) {
+  try {
+    // Resolve relative path to absolute URL to avoid ambiguity
+    const absoluteUrl = new URL(imagePath, window.location.href).href;
+    const response = await fetch(absoluteUrl);
+    if (!response.ok) throw new Error('Failed to fetch image');
+    
+    // Force image/png type regardless of server content-type header
+    const arrayBuffer = await response.arrayBuffer();
+    const blob = new Blob([arrayBuffer], { type: 'image/png' });
+    
+    // Copy to clipboard using Clipboard API
+    await navigator.clipboard.write([
+      new ClipboardItem({ 'image/png': blob })
+    ]);
+    
+    // Show feedback
+    const originalHTML = buttonElement.innerHTML;
+    buttonElement.classList.add('copied');
+    buttonElement.innerHTML = '<span class="material-symbols-outlined">check</span>';
+    
+    setTimeout(() => {
+      buttonElement.classList.remove('copied');
+      buttonElement.innerHTML = originalHTML;
+    }, 2000);
+  } catch (error) {
+    console.error('Failed to copy image:', error);
+    // Show error feedback
+    const originalHTML = buttonElement.innerHTML;
+    buttonElement.classList.add('error');
+    buttonElement.innerHTML = '<span class="material-symbols-outlined">error</span>';
+    
+    setTimeout(() => {
+      buttonElement.classList.remove('error');
+      buttonElement.innerHTML = originalHTML;
+    }, 2000);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
