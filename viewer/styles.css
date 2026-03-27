@@ -357,7 +357,8 @@ body {
 }
 
 .panel-open-link,
-.panel-copy-btn {
+.panel-copy-btn,
+.panel-download-btn {
   display: flex;
   align-items: center;
   color: #B4D4FF;
@@ -373,7 +374,8 @@ body {
 }
 
 .panel-open-link:hover,
-.panel-copy-btn:hover {
+.panel-copy-btn:hover,
+.panel-download-btn:hover {
   color: var(--accent);
 }
 
@@ -386,7 +388,8 @@ body {
 }
 
 .panel-open-link .material-symbols-outlined,
-.panel-copy-btn .material-symbols-outlined {
+.panel-copy-btn .material-symbols-outlined,
+.panel-download-btn .material-symbols-outlined {
   font-size: 1rem;
 }
 

@@ -247,6 +247,10 @@ function renderSideBySide(panel, currentPath, previousPath, viewport) {
               : ''
             }
             ${previousImg
+              ? `<a class="panel-download-btn" href="${previousImg}" download title="Download image"><span class="material-symbols-outlined">download</span></a>`
+              : ''
+            }
+            ${previousImg
               ? `<a class="panel-open-link" href="${previousImg}" target="_blank" title="Open image in new tab"><span class="material-symbols-outlined">open_in_new</span></a>`
               : ''
             }
@@ -262,6 +266,7 @@ function renderSideBySide(panel, currentPath, previousPath, viewport) {
           <h4>Current (${state.currentDate})</h4>
           <div class="panel-header-actions">
             <button class="panel-copy-btn" data-img="${currentImg}" title="Copy image to clipboard"><span class="material-symbols-outlined">content_copy</span></button>
+            <a class="panel-download-btn" href="${currentImg}" download title="Download image"><span class="material-symbols-outlined">download</span></a>
             <a class="panel-open-link" href="${currentImg}" target="_blank" title="Open image in new tab">
               <span class="material-symbols-outlined">open_in_new</span>
             </a>
@@ -567,30 +572,16 @@ async function copyImageToClipboard(imagePath, buttonElement) {
   try {
     const absoluteUrl = new URL(imagePath, window.location.href).href;
 
-    // Load image into a canvas to strip DPI/pHYs metadata from the PNG.
-    // Playwright embeds a 2x (or higher) device pixel ratio in the pHYs chunk,
-    // which causes Figma to halve (or further reduce) the displayed size.
-    // Re-encoding through canvas produces a clean 72-DPI PNG at native pixel size.
-    const img = new Image();
-    await new Promise((resolve, reject) => {
-      img.onload = resolve;
-      img.onerror = () => reject(new Error('Image failed to load'));
-      img.crossOrigin = 'anonymous';
-      img.src = absoluteUrl;
+    // Use a Promise<Blob> in ClipboardItem (Chrome's "deferred clipboard" API).
+    // This passes the raw PNG bytes through to the paste destination at OS level,
+    // instead of having the browser decode→re-encode the image (which changes DPI).
+    const blobPromise = fetch(absoluteUrl).then(r => {
+      if (!r.ok) throw new Error('Failed to fetch image');
+      return r.blob();
     });
 
-    const canvas = document.createElement('canvas');
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    canvas.getContext('2d').drawImage(img, 0, 0);
-
-    const blob = await new Promise((resolve, reject) => {
-      canvas.toBlob(b => b ? resolve(b) : reject(new Error('canvas.toBlob failed')), 'image/png');
-    });
-
-    // Copy to clipboard using Clipboard API
     await navigator.clipboard.write([
-      new ClipboardItem({ 'image/png': blob })
+      new ClipboardItem({ 'image/png': blobPromise })
     ]);
     
     // Show feedback
