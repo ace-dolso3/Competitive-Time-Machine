@@ -565,15 +565,29 @@ function setViewMode(mode) {
  */
 async function copyImageToClipboard(imagePath, buttonElement) {
   try {
-    // Resolve relative path to absolute URL to avoid ambiguity
     const absoluteUrl = new URL(imagePath, window.location.href).href;
-    const response = await fetch(absoluteUrl);
-    if (!response.ok) throw new Error('Failed to fetch image');
-    
-    // Force image/png type regardless of server content-type header
-    const arrayBuffer = await response.arrayBuffer();
-    const blob = new Blob([arrayBuffer], { type: 'image/png' });
-    
+
+    // Load image into a canvas to strip DPI/pHYs metadata from the PNG.
+    // Playwright embeds a 2x (or higher) device pixel ratio in the pHYs chunk,
+    // which causes Figma to halve (or further reduce) the displayed size.
+    // Re-encoding through canvas produces a clean 72-DPI PNG at native pixel size.
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = () => reject(new Error('Image failed to load'));
+      img.crossOrigin = 'anonymous';
+      img.src = absoluteUrl;
+    });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob(b => b ? resolve(b) : reject(new Error('canvas.toBlob failed')), 'image/png');
+    });
+
     // Copy to clipboard using Clipboard API
     await navigator.clipboard.write([
       new ClipboardItem({ 'image/png': blob })
