@@ -45,6 +45,10 @@
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -174,7 +178,7 @@ body {
 .page-nav {
   grid-column: 1;
   grid-row: 1;
-  display: none;
+  display: flex;
   align-items: center;
   column-gap: 4px;
   padding: var(--space-md) var(--space-lg);
@@ -249,7 +253,7 @@ body {
 }
 
 .timeline-controls {
-  display: none;
+  display: flex;
   align-items: center;
   gap: var(--space-lg);
   margin-left: auto;
