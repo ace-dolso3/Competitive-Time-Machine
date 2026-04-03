@@ -1,0 +1,285 @@
+{
+  "runId": "20260403T145821131Z-z2pr",
+  "createdAt": "2026-04-03T14:58:21.134Z",
+  "updatedAt": "2026-04-03T14:58:21.144Z",
+  "status": "completed",
+  "counters": {
+    "queued": 0,
+    "running": 0,
+    "completed": 0,
+    "failed": 0,
+    "skipped": 30
+  },
+  "jobs": {
+    "amazon/PDP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.134Z",
+      "endedAt": "2026-04-03T14:58:21.135Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PDP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "amazon/PLP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.135Z",
+      "endedAt": "2026-04-03T14:58:21.135Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "amazon/cart/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.135Z",
+      "endedAt": "2026-04-03T14:58:21.135Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/cart/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "amazon/category/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.135Z",
+      "endedAt": "2026-04-03T14:58:21.136Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "amazon/checkout/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.135Z",
+      "endedAt": "2026-04-03T14:58:21.136Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/checkout/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "amazon/homepage/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.136Z",
+      "endedAt": "2026-04-03T14:58:21.136Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/homepage/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/PDP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.136Z",
+      "endedAt": "2026-04-03T14:58:21.137Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/PDP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/PLP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.136Z",
+      "endedAt": "2026-04-03T14:58:21.137Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/PLP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/cart/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.137Z",
+      "endedAt": "2026-04-03T14:58:21.137Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/cart/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/category/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.137Z",
+      "endedAt": "2026-04-03T14:58:21.138Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/category/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/checkout/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.137Z",
+      "endedAt": "2026-04-03T14:58:21.138Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/checkout/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "homedepot/homepage/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.138Z",
+      "endedAt": "2026-04-03T14:58:21.138Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/homepage/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/PDP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.138Z",
+      "endedAt": "2026-04-03T14:58:21.138Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/PDP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/PLP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.138Z",
+      "endedAt": "2026-04-03T14:58:21.139Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/PLP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/cart/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.138Z",
+      "endedAt": "2026-04-03T14:58:21.139Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/cart/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/category/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.139Z",
+      "endedAt": "2026-04-03T14:58:21.139Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/category/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/checkout/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.139Z",
+      "endedAt": "2026-04-03T14:58:21.139Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/checkout/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "lowe's/homepage/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.139Z",
+      "endedAt": "2026-04-03T14:58:21.139Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/homepage/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/PDP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.140Z",
+      "endedAt": "2026-04-03T14:58:21.140Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/PDP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/PLP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.140Z",
+      "endedAt": "2026-04-03T14:58:21.140Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/PLP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/cart/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.140Z",
+      "endedAt": "2026-04-03T14:58:21.140Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/cart/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/category/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.140Z",
+      "endedAt": "2026-04-03T14:58:21.141Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/category/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/checkout/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.141Z",
+      "endedAt": "2026-04-03T14:58:21.141Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/checkout/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "target/homepage/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.141Z",
+      "endedAt": "2026-04-03T14:58:21.142Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/homepage/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/PDP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.142Z",
+      "endedAt": "2026-04-03T14:58:21.142Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/PDP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/PLP/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.142Z",
+      "endedAt": "2026-04-03T14:58:21.143Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/PLP/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/cart/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.142Z",
+      "endedAt": "2026-04-03T14:58:21.143Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/cart/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/category/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.143Z",
+      "endedAt": "2026-04-03T14:58:21.143Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/category/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/checkout/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.143Z",
+      "endedAt": "2026-04-03T14:58:21.143Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/checkout/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    },
+    "walmart/homepage/2026-04-03": {
+      "status": "skipped",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:58:21.143Z",
+      "endedAt": "2026-04-03T14:58:21.144Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/homepage/2026-04-03/analysis.json",
+      "reason": "analysis_exists"
+    }
+  }
+}

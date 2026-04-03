@@ -1,0 +1,6 @@
+{
+  "disableSkills": true,
+  "disableExtendedSkills": true,
+  "maxContextTokens": 120000,
+  "model": "claude-opus-4-20250805"
+}

@@ -1,0 +1,259 @@
+{
+  "runId": "20260403T145821131Z-z2pr",
+  "createdAt": "2026-04-03T14:58:21.134Z",
+  "options": {
+    "concurrency": 3,
+    "maxRetries": 3,
+    "dryRun": false,
+    "retryFailedOnly": false,
+    "skipExisting": true,
+    "force": false,
+    "competitors": null,
+    "pages": null,
+    "since": null,
+    "resume": null
+  },
+  "totalJobs": 30,
+  "jobs": [
+    {
+      "id": "amazon/PDP/2026-04-03",
+      "competitor": "amazon",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/PLP/2026-04-03",
+      "competitor": "amazon",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/cart/2026-04-03",
+      "competitor": "amazon",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/category/2026-04-03",
+      "competitor": "amazon",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/checkout/2026-04-03",
+      "competitor": "amazon",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/homepage/2026-04-03",
+      "competitor": "amazon",
+      "page": "homepage",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/homepage",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "homedepot/PDP/2026-04-03",
+      "competitor": "homedepot",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "homedepot/PLP/2026-04-03",
+      "competitor": "homedepot",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "homedepot/cart/2026-04-03",
+      "competitor": "homedepot",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "homedepot/category/2026-04-03",
+      "competitor": "homedepot",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "homedepot/checkout/2026-04-03",
+      "competitor": "homedepot",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "homedepot/homepage/2026-04-03",
+      "competitor": "homedepot",
+      "page": "homepage",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/homedepot/homepage",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/PDP/2026-04-03",
+      "competitor": "lowe's",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/PLP/2026-04-03",
+      "competitor": "lowe's",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/cart/2026-04-03",
+      "competitor": "lowe's",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/category/2026-04-03",
+      "competitor": "lowe's",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/checkout/2026-04-03",
+      "competitor": "lowe's",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "lowe's/homepage/2026-04-03",
+      "competitor": "lowe's",
+      "page": "homepage",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/lowe's/homepage",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "target/PDP/2026-04-03",
+      "competitor": "target",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "target/PLP/2026-04-03",
+      "competitor": "target",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "target/cart/2026-04-03",
+      "competitor": "target",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "target/category/2026-04-03",
+      "competitor": "target",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "target/checkout/2026-04-03",
+      "competitor": "target",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "target/homepage/2026-04-03",
+      "competitor": "target",
+      "page": "homepage",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/target/homepage",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "walmart/PDP/2026-04-03",
+      "competitor": "walmart",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "walmart/PLP/2026-04-03",
+      "competitor": "walmart",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "walmart/cart/2026-04-03",
+      "competitor": "walmart",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "walmart/category/2026-04-03",
+      "competitor": "walmart",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "walmart/checkout/2026-04-03",
+      "competitor": "walmart",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    },
+    {
+      "id": "walmart/homepage/2026-04-03",
+      "competitor": "walmart",
+      "page": "homepage",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/walmart/homepage",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-26"
+    }
+  ]
+}

@@ -7,6 +7,7 @@
     "diff": "node src/diff.js",
     "index": "node src/generate-index.js",
     "analyze": "node src/analyze.js",
+    "analyze:all": "node src/analyze-all.js",
     "serve": "python3 -m http.server 8080"
   },
   "keywords": [

@@ -18,7 +18,7 @@ A visual competitive intelligence system that organizes manually captured screen
 - **Why:** Replace manual "browse and take notes" with a living visual record; support UX design decisions with concrete competitor evidence
 - **Who:** Senior UX/UI Designer (primary), shared with marketing, product, and executives
 - **Scope:** Key pages including PDPs and customer journey steps; desktop and mobile viewports
-- **Key Capability:** Visual diff highlighting with on-demand AI analysis for layout changes, styling changes, and UX pattern detection
+- **Key Capability:** Visual diff highlighting with feature-first analysis for new or materially updated experience components
 - **Output:** Integrated viewer/dashboard with analysis panel
 - **Operational Model:** Manual screenshot captures; automated diff generation and indexing
 
@@ -53,8 +53,8 @@ A visual competitive intelligence system that organizes manually captured screen
 4. **Viewer Dashboard** (`viewer/index.html`)  
    Vanilla HTML/JS/CSS single-page application. Displays screenshots, diffs, and AI analysis. Runs from filesystem with no build step.
 
-5. **AI Analysis Integration**  
-   On-demand via IDE (Claude/Copilot). Reads captures, generates UX-focused insights, writes to `analysis.json` for viewer display.
+5. **Feature Analysis Integration**  
+  Default path is manual review in the IDE by Copilot. Screenshots and diffs are inspected directly, and only confirmed new or materially updated features are written into `analysis.json` for viewer display.
 
 ### Data Flow
 
@@ -171,8 +171,8 @@ competitors:
   - Side-by-side (current vs. previous)
   - Diff overlay
   - Before/after slider
-- **Change Indicators:** Color-coded badges (green/yellow/red) by change percentage
-- **Insights Panel:** Displays AI analysis inline with screenshots
+- **Feature Summary:** Viewport-level status showing new feature, updated feature, no feature change, or needs review
+- **Insights Panel:** Displays feature-focused analysis inline with screenshots
 - **Notes Field:** Editable annotations saved to metadata
 
 ### Technical Approach
@@ -185,23 +185,28 @@ Vanilla HTML + JavaScript + CSS. No framework, no build step. Opens directly fro
 
 ### Workflow
 
-1. Open project in IDE (VS Code with Copilot/Claude)
-2. Run analysis command specifying date range and scope
-3. AI examines screenshots and diffs
-4. Structured insights written to `analysis.json`
-5. Viewer displays insights in panel
+1. Add screenshots to dated capture folders
+2. Run `npm run diff`
+3. Run `npm run index`
+4. Ask Copilot to review the latest comparisons and write only confirmed feature changes into `analysis.json`
+5. Viewer displays those insights in panel
 
 ### Analysis Categories
 
-- 🔶 **Layout:** Element positioning, section changes, above-fold content
-- 🎨 **Styling:** Colors, typography, button styles, visual hierarchy
-- 📐 **UX Patterns:** Navigation behavior, interaction patterns, new components
+- 🧩 **New Features:** Net-new modules, tools, flows, or merchandising mechanisms
+- 🔄 **Updated Features:** Meaningful changes to existing modules or shopping-flow components
+- 🚫 **Ignored Noise:** Copy swaps, image swaps, price changes, and cosmetic drift unless they indicate a feature change
 
 ### Report Flexibility
 
 - Analyze all competitors for a given week (consolidated)
 - Analyze single competitor (focused)
 - Analyze date range (monthly summary)
+
+### Cost Constraint
+
+- The system should not depend on a separately funded external model API for routine analysis.
+- Scripted model-backed analysis is optional only; manual Copilot review is the supported default.
 
 ---
 

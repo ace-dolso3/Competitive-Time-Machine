@@ -1,0 +1,13 @@
+{
+  "runId": "20260403T145821131Z-z2pr",
+  "finishedAt": "2026-04-03T14:58:21.144Z",
+  "status": "completed",
+  "counters": {
+    "queued": 0,
+    "running": 0,
+    "completed": 0,
+    "failed": 0,
+    "skipped": 30
+  },
+  "failedJobs": []
+}

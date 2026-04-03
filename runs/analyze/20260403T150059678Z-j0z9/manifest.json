@@ -1,0 +1,40 @@
+{
+  "runId": "20260403T150059678Z-j0z9",
+  "createdAt": "2026-04-03T15:00:59.679Z",
+  "options": {
+    "concurrency": 2,
+    "maxRetries": 3,
+    "dryRun": false,
+    "retryFailedOnly": false,
+    "skipExisting": false,
+    "force": true,
+    "competitors": [
+      "amazon"
+    ],
+    "pages": [
+      "category",
+      "PLP"
+    ],
+    "since": null,
+    "resume": null
+  },
+  "totalJobs": 2,
+  "jobs": [
+    {
+      "id": "amazon/PLP/2026-04-03",
+      "competitor": "amazon",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/category/2026-04-03",
+      "competitor": "amazon",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    }
+  ]
+}

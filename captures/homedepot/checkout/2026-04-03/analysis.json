@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-04-03T15:15:11.336Z",
+  "competitor": "homedepot",
+  "page": "checkout",
+  "currentDate": "2026-04-03",
+  "previousDate": "2026-03-26",
+  "analysisMode": "fallback",
+  "viewports": {
+    "desktop": {
+      "skipped": true,
+      "reason": "missing_images"
+    },
+    "mobile": {
+      "skipped": true,
+      "reason": "missing_images"
+    }
+  }
+}

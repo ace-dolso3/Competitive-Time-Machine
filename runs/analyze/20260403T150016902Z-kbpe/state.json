@@ -1,0 +1,33 @@
+{
+  "runId": "20260403T150016902Z-kbpe",
+  "createdAt": "2026-04-03T15:00:16.903Z",
+  "updatedAt": "2026-04-03T15:00:16.905Z",
+  "status": "completed",
+  "counters": {
+    "queued": 0,
+    "running": 0,
+    "completed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "jobs": {
+    "amazon/PLP/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T15:00:16.904Z",
+      "endedAt": "2026-04-03T15:00:16.905Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP/2026-04-03/analysis.json",
+      "reason": null
+    },
+    "amazon/category/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T15:00:16.905Z",
+      "endedAt": "2026-04-03T15:00:16.905Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category/2026-04-03/analysis.json",
+      "reason": null
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Claude Code Rules - Disables Skills to Reduce Context Window
+---
+version: 1
+project: "Competitive Time Machine"
+
+# Disable all skills to optimize context window for this project
+disableSkills: true

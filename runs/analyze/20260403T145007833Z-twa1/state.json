@@ -1,0 +1,60 @@
+{
+  "runId": "20260403T145007833Z-twa1",
+  "createdAt": "2026-04-03T14:50:07.835Z",
+  "updatedAt": "2026-04-03T14:50:07.840Z",
+  "status": "completed",
+  "counters": {
+    "queued": 0,
+    "running": 0,
+    "completed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "jobs": {
+    "amazon/PDP/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:50:07.835Z",
+      "endedAt": "2026-04-03T14:50:07.838Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PDP/2026-04-03/analysis.json",
+      "reason": null
+    },
+    "amazon/PLP/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:50:07.836Z",
+      "endedAt": "2026-04-03T14:50:07.838Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP/2026-04-03/analysis.json",
+      "reason": null
+    },
+    "amazon/cart/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:50:07.837Z",
+      "endedAt": "2026-04-03T14:50:07.838Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/cart/2026-04-03/analysis.json",
+      "reason": null
+    },
+    "amazon/category/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:50:07.838Z",
+      "endedAt": "2026-04-03T14:50:07.839Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category/2026-04-03/analysis.json",
+      "reason": null
+    },
+    "amazon/checkout/2026-04-03": {
+      "status": "completed",
+      "attempts": 1,
+      "lastError": null,
+      "startedAt": "2026-04-03T14:50:07.839Z",
+      "endedAt": "2026-04-03T14:50:07.840Z",
+      "analysisPath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/checkout/2026-04-03/analysis.json",
+      "reason": null
+    }
+  }
+}

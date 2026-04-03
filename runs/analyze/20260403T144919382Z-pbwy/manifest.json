@@ -1,0 +1,67 @@
+{
+  "runId": "20260403T144919382Z-pbwy",
+  "createdAt": "2026-04-03T14:49:19.384Z",
+  "options": {
+    "concurrency": 3,
+    "maxRetries": 3,
+    "dryRun": false,
+    "retryFailedOnly": false,
+    "skipExisting": true,
+    "force": false,
+    "competitors": [
+      "amazon"
+    ],
+    "pages": [
+      "PDP",
+      "PLP",
+      "cart",
+      "category",
+      "checkout"
+    ],
+    "since": null,
+    "resume": null
+  },
+  "totalJobs": 5,
+  "jobs": [
+    {
+      "id": "amazon/PDP/2026-04-03",
+      "competitor": "amazon",
+      "page": "PDP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PDP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/PLP/2026-04-03",
+      "competitor": "amazon",
+      "page": "PLP",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/PLP",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/cart/2026-04-03",
+      "competitor": "amazon",
+      "page": "cart",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/cart",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/category/2026-04-03",
+      "competitor": "amazon",
+      "page": "category",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/category",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    },
+    {
+      "id": "amazon/checkout/2026-04-03",
+      "competitor": "amazon",
+      "page": "checkout",
+      "pagePath": "/Users/davidolson/Library/CloudStorage/OneDrive-AceHardwareCORP/Documents/Work - Ace Hardware/Competitive Time Machine/captures/amazon/checkout",
+      "currentDate": "2026-04-03",
+      "previousDate": "2026-03-27"
+    }
+  ]
+}

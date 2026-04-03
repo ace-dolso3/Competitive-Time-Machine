@@ -15,9 +15,13 @@ const state = {
   currentPage: null,
   currentDate: null,
   currentViewport: 'desktop',
-  viewMode: 'sidebyside', // 'sidebyside', 'diff', 'slider'
+  viewMode: 'sidebyside', // 'sidebyside', 'slider'
   capturesPath: '../captures'
 };
+
+// Keep a stable cache-bust token for this viewer session so refreshed analysis
+// files are fetched reliably after local regenerate/re-run commands.
+const cacheBust = Date.now();
 
 // ═══════════════════════════════════════════════════════════════
 // DATA LOADING
@@ -66,7 +70,7 @@ async function loadCapturesIndex() {
 async function loadMetadata(competitor, page, date) {
   try {
     const path = `../captures/${competitor}/${page}/${date}/metadata.json`;
-    const response = await fetch(path);
+    const response = await fetch(`${path}?t=${cacheBust}`);
     if (response.ok) {
       return await response.json();
     }
@@ -82,7 +86,7 @@ async function loadMetadata(competitor, page, date) {
 async function loadAnalysis(competitor, page, date) {
   try {
     const path = `../captures/${competitor}/${page}/${date}/analysis.json`;
-    const response = await fetch(path);
+    const response = await fetch(`${path}?t=${cacheBust}`);
     if (response.ok) {
       return await response.json();
     }
@@ -223,11 +227,11 @@ function renderViewer() {
     case 'sidebyside':
       renderSideBySide(panel, currentPath, previousPath, viewport);
       break;
-    case 'diff':
-      renderDiffView(panel, currentPath, viewport);
-      break;
     case 'slider':
       renderSliderView(panel, currentPath, previousPath, viewport);
+      break;
+    default:
+      renderSideBySide(panel, currentPath, previousPath, viewport);
       break;
   }
 }
@@ -328,102 +332,74 @@ function renderSliderView(panel, currentPath, previousPath, viewport) {
   });
 }
 
-/**
- * Render analysis panel content
- */
 async function renderAnalysis() {
-  if (!state.currentCompetitor || !state.currentPage || !state.currentDate) {
-    return;
-  }
-  
-  // Load metadata
-  const metadata = await loadMetadata(
-    state.currentCompetitor, 
-    state.currentPage, 
-    state.currentDate
-  );
-  
-  // Update change stats
-  const desktopStat = document.getElementById('stat-desktop');
-  const mobileStat = document.getElementById('stat-mobile');
-  
-  if (metadata?.viewports) {
-    updateStatDisplay(desktopStat, metadata.viewports.desktop);
-    updateStatDisplay(mobileStat, metadata.viewports.mobile);
-  } else {
-    desktopStat.textContent = '-';
-    desktopStat.className = 'stat-value';
-    mobileStat.textContent = '-';
-    mobileStat.className = 'stat-value';
-  }
-  
-  // Load AI analysis
-  const analysis = await loadAnalysis(
-    state.currentCompetitor,
-    state.currentPage,
-    state.currentDate
-  );
-  
-  const insightsEl = document.getElementById('ai-insights');
-
-  // Always clear the date first; only re-show it if a comparison is available
   const analysisDateEl = document.getElementById('analysis-date');
-  if (analysisDateEl) { analysisDateEl.textContent = ''; analysisDateEl.style.display = 'none'; }
-
-  // New viewport-based format from analyze.js
-  if (analysis?.viewports) {
-    const viewport = state.currentViewport;
-    const viewportAnalysis = analysis.viewports[viewport];
-    
-    if (viewportAnalysis?.skipped) {
-      insightsEl.innerHTML = `
-        <p class="placeholder">${viewportAnalysis.summary || 'Analysis skipped: ' + viewportAnalysis.reason}</p>
-      `;
-      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
-    } else if (viewportAnalysis?.success && viewportAnalysis?.analysis) {
-      // Convert markdown-style text to HTML
-      const html = formatAnalysisMarkdown(viewportAnalysis.analysis);
-      insightsEl.innerHTML = `
-        <div class="analysis-content">
-          ${html}
-        </div>
-      `;
-      const analysisDateEl = document.getElementById('analysis-date');
-      if (analysisDateEl) {
-        if (analysis.previousDate) {
-          analysisDateEl.textContent = `Comparing ${formatDate(analysis.currentDate)} to ${formatDate(analysis.previousDate)}`;
-          analysisDateEl.style.display = '';
-        } else {
-          analysisDateEl.textContent = '';
-          analysisDateEl.style.display = 'none';
-        }
-      }
-    } else if (viewportAnalysis?.error) {
-      insightsEl.innerHTML = `
-        <p class="placeholder error">Analysis error: ${viewportAnalysis.error}</p>
-      `;
-      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
-    } else {
-      insightsEl.innerHTML = `
-        <p class="placeholder">No analysis for ${viewport} viewport.</p>
-      `;
-      const el = document.getElementById('analysis-date'); if (el) { el.textContent = ''; el.style.display = 'none'; }
-    }
-  } 
-  // Legacy insights array format
-  else if (analysis?.insights) {
-    insightsEl.innerHTML = analysis.insights.map(insight => `
-      <div class="insight-item">
-        <div class="insight-category">${insight.category}</div>
-        <div class="insight-text">${insight.text}</div>
-      </div>
-    `).join('');
-  } else {
-    insightsEl.innerHTML = `
-      <p class="placeholder">No analysis available yet.</p>
-      <p class="placeholder hint">Run <code>npm run analyze</code> to generate AI insights.</p>
-    `;
+  if (analysisDateEl) {
+    analysisDateEl.textContent = '';
+    analysisDateEl.style.display = 'none';
   }
+}
+
+function getViewportFeatureState(metadataViewport, analysisViewport) {
+  if (analysisViewport?.featureStatus) {
+    return analysisViewport.featureStatus;
+  }
+
+  if (analysisViewport?.featureAnalysis?.status) {
+    return analysisViewport.featureAnalysis.status;
+  }
+
+  if (metadataViewport?.success && metadataViewport.changePercent === 0) {
+    return 'no_feature_change';
+  }
+
+  if (metadataViewport?.success && metadataViewport.changePercent > 0) {
+    return 'review_required';
+  }
+
+  return 'unavailable';
+}
+
+function formatFeatureAnalysis(featureAnalysis) {
+  const sections = [];
+  sections.push(`<h4>Summary</h4><p>${escapeHtml(featureAnalysis.summary || 'No summary available.')}</p>`);
+
+  if (featureAnalysis.newFeatures?.length) {
+    sections.push(`<h4>New Features</h4>${renderFeatureList(featureAnalysis.newFeatures)}`);
+  }
+
+  if (featureAnalysis.updatedFeatures?.length) {
+    sections.push(`<h4>Updated Features</h4>${renderFeatureList(featureAnalysis.updatedFeatures)}`);
+  }
+
+  if (featureAnalysis.removedFeatures?.length) {
+    sections.push(`<h4>Removed Features</h4>${renderFeatureList(featureAnalysis.removedFeatures)}`);
+  }
+
+  if (featureAnalysis.evidence?.length) {
+    sections.push(`<h4>Evidence</h4>${renderFeatureList(featureAnalysis.evidence)}`);
+  }
+
+  if (featureAnalysis.ignoredNoise?.length) {
+    sections.push(`<h4>Ignored Noise</h4>${renderFeatureList(featureAnalysis.ignoredNoise)}`);
+  }
+
+  if (featureAnalysis.strategicInsights?.length) {
+    sections.push(`<h4>Strategic Insights</h4>${renderFeatureList(featureAnalysis.strategicInsights)}`);
+  }
+
+  return sections.join('');
+}
+
+function renderFeatureList(items) {
+  return `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 /**
@@ -455,21 +431,35 @@ function formatAnalysisMarkdown(text) {
 }
 
 function updateStatDisplay(element, viewportData) {
-  if (!viewportData?.success) {
-    element.textContent = '-';
-    element.className = 'stat-value';
-    return;
-  }
-  
-  const percent = viewportData.changePercent;
-  element.textContent = `${percent}%`;
-  
-  if (percent > 10) {
-    element.className = 'stat-value high';
-  } else if (percent > 2) {
-    element.className = 'stat-value medium';
-  } else {
-    element.className = 'stat-value low';
+  const status = typeof viewportData === 'string'
+    ? viewportData
+    : getViewportFeatureState(viewportData, null);
+
+  switch (status) {
+    case 'new_feature':
+      element.textContent = 'New feature';
+      element.className = 'stat-value high';
+      break;
+    case 'updated_feature':
+      element.textContent = 'Updated feature';
+      element.className = 'stat-value medium';
+      break;
+    case 'no_feature_change':
+      element.textContent = 'No feature change';
+      element.className = 'stat-value low';
+      break;
+    case 'review_required':
+      element.textContent = 'Needs review';
+      element.className = 'stat-value medium';
+      break;
+    case 'uncertain':
+      element.textContent = 'Uncertain';
+      element.className = 'stat-value medium';
+      break;
+    default:
+      element.textContent = '-';
+      element.className = 'stat-value';
+      break;
   }
 }
 
@@ -555,7 +545,6 @@ function setViewMode(mode) {
   state.viewMode = mode;
   
   document.getElementById('mode-sidebyside').classList.toggle('active', mode === 'sidebyside');
-  document.getElementById('mode-diff').classList.toggle('active', mode === 'diff');
   document.getElementById('mode-slider').classList.toggle('active', mode === 'slider');
   
   renderViewer();
@@ -739,7 +728,6 @@ function setupEventListeners() {
   
   // View mode toggle
   document.getElementById('mode-sidebyside').addEventListener('click', () => setViewMode('sidebyside'));
-  document.getElementById('mode-diff').addEventListener('click', () => setViewMode('diff'));
   document.getElementById('mode-slider').addEventListener('click', () => setViewMode('slider'));
   
   // Analysis panel toggle

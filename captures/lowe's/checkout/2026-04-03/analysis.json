@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-03T15:15:11.339Z",
+  "competitor": "lowe's",
+  "page": "checkout",
+  "currentDate": "2026-04-03",
+  "previousDate": "2026-03-26",
+  "analysisMode": "fallback",
+  "viewports": {
+    "desktop": {
+      "success": true,
+      "source": "fallback",
+      "featureStatus": "review_required",
+      "changeSummary": "Visual differences (5.16%) were detected, but only confirmed feature changes should be surfaced. Review is still required.",
+      "featureAnalysis": {
+        "status": "review_required",
+        "summary": "Visual differences (5.16%) were detected, but only confirmed feature changes should be surfaced. Review is still required.",
+        "newFeatures": [],
+        "updatedFeatures": [],
+        "removedFeatures": [],
+        "evidence": [
+          "A visual diff exists, but raw image or copy deltas are intentionally ignored until a feature change is confirmed."
+        ],
+        "ignoredNoise": [
+          "Copy, imagery, pricing, and simple styling changes are not treated as feature changes by default."
+        ],
+        "strategicInsights": [],
+        "confidence": "low"
+      },
+      "analysis": "**Summary**: Visual differences (5.16%) were detected, but only confirmed feature changes should be surfaced. Review is still required.\n\n**Status**: review_required\n\n**Evidence**:\n- A visual diff exists, but raw image or copy deltas are intentionally ignored until a feature change is confirmed.\n\n**Ignored Noise**:\n- Copy, imagery, pricing, and simple styling changes are not treated as feature changes by default."
+    },
+    "mobile": {
+      "success": true,
+      "source": "fallback",
+      "featureStatus": "no_feature_change",
+      "changeSummary": "No new or updated feature is confirmed in this comparison.",
+      "featureAnalysis": {
+        "status": "no_feature_change",
+        "summary": "No new or updated feature is confirmed in this comparison.",
+        "newFeatures": [],
+        "updatedFeatures": [],
+        "removedFeatures": [],
+        "evidence": [
+          "No visual diff was detected for this viewport."
+        ],
+        "ignoredNoise": [
+          "Copy, imagery, pricing, and simple styling changes are not treated as feature changes by default."
+        ],
+        "strategicInsights": [],
+        "confidence": "high"
+      },
+      "analysis": "**Summary**: No new or updated feature is confirmed in this comparison.\n\n**Status**: no_feature_change\n\n**Evidence**:\n- No visual diff was detected for this viewport.\n\n**Ignored Noise**:\n- Copy, imagery, pricing, and simple styling changes are not treated as feature changes by default."
+    }
+  }
+}

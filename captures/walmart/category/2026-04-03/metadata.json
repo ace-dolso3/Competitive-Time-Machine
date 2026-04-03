@@ -1,0 +1,26 @@
+{
+  "captureDate": "2026-04-03",
+  "generatedAt": "2026-04-03T15:14:54.133Z",
+  "viewports": {
+    "desktop": {
+      "success": true,
+      "diffPixels": 27239417,
+      "totalPixels": 90207936,
+      "changePercent": 30.2,
+      "dimensions": {
+        "width": 3276,
+        "height": 27536
+      }
+    },
+    "mobile": {
+      "success": true,
+      "diffPixels": 3232514,
+      "totalPixels": 21254400,
+      "changePercent": 15.21,
+      "dimensions": {
+        "width": 738,
+        "height": 28800
+      }
+    }
+  }
+}
